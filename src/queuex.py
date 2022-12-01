@@ -116,3 +116,53 @@ class Queue(Generic[T]):
             deq = self.queue.head.next.val
             remove_link(self.queue.head.next)
             return deq
+
+class Dequeue(Generic[T]):
+    """A queue of type-T elements."""
+
+    def __init__(self) -> None:
+        """Make a new queue."""
+        # FIXME: code here
+        self.queue = DLList()
+
+    def is_empty(self) -> bool:
+        """Check if this queue is empty."""
+        # FIXME: code here
+        return self.queue.head == self.queue.head.next
+        
+    def enqueue(self, x: T) -> None:
+        """Add x to the back of this queue."""
+        # FIXME: code here
+        ...
+        insert_after(self.queue.head.prev, x)
+            
+    def front(self) -> T:
+        """Get the front element of the queue."""
+        # FIXME: code here
+        ...
+        if self.is_empty():
+            return None
+        else:
+            return self.queue.head.next.val
+
+    def back(self) -> T:
+        """Get the front element of the queue."""
+        # FIXME: code here
+        ...
+        if self.is_empty():
+            return None
+        else:
+            return self.queue.head.prev.val
+
+    def dequeue(self) -> T:
+        """Get the front element, remove it from the queue, and return it."""
+        # FIXME: code here
+        ...
+        if self.is_empty():
+            return None
+        else:
+            front = self.queue.head.next.val
+            back = self.queue.head.prev.val
+            remove_link(self.queue.head.next)
+            remove_link(self.queue.head.prev)
+            return front, back
